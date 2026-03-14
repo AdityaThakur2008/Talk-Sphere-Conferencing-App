@@ -1,0 +1,297 @@
+.VideoMeet {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+.Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+  height: 90vh;
+  gap: 20px;
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+}
+.JoinOptions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: self-start;
+  color: white;
+  gap: 20px;
+}
+.AskUsername {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+.UsernameInput {
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  flex: 1;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #45a049;
+}
+.VideoPreview {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 90%;
+  background-color: #000000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.VideoPreview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ------------------ Main Container ------------------ */
+.Main {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(145deg, #0f0f0f, #1b1b1b);
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+/* ------------------ Video Section ------------------ */
+
+
+/* Whole video area */
+
+.video-container {
+  flex: 2.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: #0e0e0e;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+.User-Video {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  z-index: 10;
+}
+.User-Video{
+  width: 200px;
+  height: 150px;
+  left: 20px;
+  bottom: 100px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ==== Video Grid ==== */
+.video-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-height: 80vh;
+  gap: 15px;
+  padding: 0 20px;
+  flex: 1;
+  border-radius: 16px;
+  overflow-y: auto;
+}
+.video-cards div {
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.video-cards video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.video-cards div:hover video {
+  transform: scale(1.03);
+}
+
+/* Optional active border for speaking user */
+.video-cards div.active {
+  outline: 3px solid #00ff95;
+  box-shadow: 0 0 15px #00ff95;
+}
+
+/* ==== Video Options (bottom controls) ==== */
+.video-options-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.video-options {
+  display: flex;
+ width: 90%;
+
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 15px 0;
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.video-options button {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.video-options button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgb(0, 255, 213);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .video-cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .video-options {
+    gap: 15px;
+    padding: 10px 0;
+  }
+}
+
+/* ------------------ Chat Section ------------------ */
+.chat-container {
+  flex: 1;
+  background: #0e0e0e;
+  border-left: 1px solid #2b2b2b;
+  border-radius: 16px 0 0 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.chat-container h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.SendMessageContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.Messages {
+  background: #1b1b1b;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.Messages:hover {
+  background: #222;
+}
+
+.Person {
+  font-size: 22px;
+  color: #4b9cff;
+}
+
+.Username {
+  font-weight: 600;
+  margin-right: 6px;
+  color: #fff;
+}
+
+.message {
+  color: #ddd;
+  font-size: 14px;
+}
+
+/* ------------------ Chat Input ------------------ */
+.ChatInput {
+  display: flex;
+}
+.MessageInput {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #1a1a1a;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  width: calc(100% - 60px);
+  margin-top: 10px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.SendButton {
+  background: none;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: white;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+}
+
+.SendButton svg :hover {
+  color: #4b9cff;
+}
+
+/* ------------------ Scrollbar ------------------ */
+.SendMessageContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.SendMessageContainer::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}

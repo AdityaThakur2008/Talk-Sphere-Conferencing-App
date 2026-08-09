@@ -17,7 +17,16 @@ const server = createServer(app);
 const io = connectToServer(server);
 
 app.set("port", process.env.PORT || 8000);
-app.use(cors());
+app.use(
+  cors({
+    allowedHeaders: ["Content-Type", "Authorization"],
+    allowMethods: ["GET", "POST", "PUT", "DELETE"],
+    origin: [
+      "http://localhost:3000",
+      "https://talk-sphere-conferencing-app.onrender.com",
+    ],
+  }),
+);
 app.use(express.json({ limit: "40kb" }));
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
 app.use("/user", userRoutes);

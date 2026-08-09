@@ -3,6 +3,7 @@ import httpStatus from "http-status";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import { Meeting } from "../models/meeting.model.js";
+import jwt from "jsonwebtoken";
 
 const login = async (req, res) => {
   const { username, password } = req.body;
@@ -23,12 +24,18 @@ const login = async (req, res) => {
 
     let isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (isPasswordCorrect) {
-      let token = crypto.randomBytes(20).toString("hex");
+      const token = jwt.sign(
+        {
+          id: user._id.toString(),
+          username: user.username,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: process.env.JWT_EXPIRES_IN || "7d",
+        },
+      );
 
-      user.token = token;
-      await user.save();
-
-      return res.status(httpStatus.OK).json({ token: token });
+      return res.status(httpStatus.OK).json({ token });
     } else {
       return res
         .status(httpStatus.UNAUTHORIZED)
@@ -69,36 +76,44 @@ const register = async (req, res) => {
   }
 };
 
-const getUserHistory = async( req, res) => {
-  const {token} = req.query;
+const getUserHistory = async (req, res) => {
   try {
-    const user = await User.findOne({ token:token });
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
     const meetings = await Meeting.find({ user_id: user.username });
-    res.json(meetings)
+    res.json(meetings);
   } catch (error) {
     res.json({ message: `something went wrong ${error}` });
   }
-}
+};
 
-const addToHistory = async (req ,res) =>{
+const addToHistory = async (req, res) => {
   const { token, meeting_Code } = req.body;
 
   try {
     const user = await User.findOne({ token: token });
     if (!user) {
-      return res.status(httpStatus.NOT_FOUND).json({ message: "User not found" });
+      return res
+        .status(httpStatus.NOT_FOUND)
+        .json({ message: "User not found" });
     } else {
       const newMeeting = new Meeting({
         user_id: user.username,
         meetingCode: meeting_Code,
-
       });
       await newMeeting.save();
-      return res.status(httpStatus.CREATED).json({ message: "Meeting added to history" });
+      return res
+        .status(httpStatus.CREATED)
+        .json({ message: "Meeting added to history" });
     }
   } catch (error) {
     res.json({ message: `something went wrong ${error}` });
   }
-}
+};
 
-export { login, register, getUserHistory , addToHistory };
+export { login, register, getUserHistory, addToHistory };

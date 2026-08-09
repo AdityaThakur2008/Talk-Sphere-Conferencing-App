@@ -1,297 +1,342 @@
 .VideoMeet {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000000;
+  background: #06070b;
+  padding: 20px;
 }
+
 .Container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 90vw;
-  height: 90vh;
-  gap: 20px;
-  background-color: #1c1c1c;
-  padding: 20px;
-  border-radius: 10px;
+  width: min(1200px, 100%);
+  min-height: min(88vh, 860px);
+  gap: 24px;
+  background: #0f1218;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
 }
+
 .JoinOptions {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: self-start;
-  color: white;
+  align-items: flex-start;
+  color: #f6f7fb;
   gap: 20px;
 }
+
 .AskUsername {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 12px;
   width: 100%;
+  flex-wrap: wrap;
 }
+
 .UsernameInput {
-  padding: 10px;
-  border-radius: 5px;
-  color: black;
-  border: none;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  color: #f6f7fb;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
   outline: none;
-  font-size: 16px;
-  flex: 1;
+  font-size: 15px;
+  flex: 1 1 220px;
 }
+
 button {
-  padding: 10px 20px;
+  min-height: 44px;
+  padding: 0 16px;
   border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
+  border-radius: 10px;
+  background-color: #5b8cff;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
+
 button:hover {
-  background-color: #45a049;
+  background-color: #7aa2ff;
+  transform: translateY(-1px);
 }
+
 .VideoPreview {
-  flex: 2;
+  flex: 1.2;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
-  height: 90%;
-  background-color: #000000;
-  border-radius: 10px;
+  min-height: 320px;
+  background: #06070b;
+  border-radius: 18px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .VideoPreview video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* ------------------ Main Container ------------------ */
+
 .Main {
   display: flex;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(145deg, #0f0f0f, #1b1b1b);
-  color: #fff;
-  font-family: "Inter", sans-serif;
+  background: #06070b;
+  color: #f6f7fb;
+  font-family: Inter, system-ui, sans-serif;
 }
 
-/* ------------------ Video Section ------------------ */
-
-
-/* Whole video area */
-
 .video-container {
-  flex: 2.5;
+  flex: 2.2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  background: #0e0e0e;
+  background: #06070b;
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  padding: 10px 0;
+  padding: 16px;
   box-sizing: border-box;
 }
+
 .User-Video {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-  z-index: 10;
-}
-.User-Video{
-  width: 200px;
-  height: 150px;
   left: 20px;
-  bottom: 100px;
+  bottom: 24px;
+  width: 220px;
+  height: 140px;
   object-fit: cover;
   border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  z-index: 10;
 }
 
-/* ==== Video Grid ==== */
+.User-Video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .video-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  max-height: 80vh;
-  gap: 15px;
-  padding: 0 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  padding: 0 2px 6px;
   flex: 1;
-  border-radius: 16px;
   overflow-y: auto;
+  align-content: start;
 }
+
 .video-cards div {
-  background: #1a1a1a;
+  background: #0f1218;
   border-radius: 16px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  min-height: 180px;
 }
 
 .video-cards video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  background: #06070b;
+  transition: transform 0.2s ease;
 }
 
 .video-cards div:hover video {
-  transform: scale(1.03);
+  transform: scale(1.01);
 }
 
-/* Optional active border for speaking user */
-.video-cards div.active {
-  outline: 3px solid #00ff95;
-  box-shadow: 0 0 15px #00ff95;
-}
-
-/* ==== Video Options (bottom controls) ==== */
 .video-options-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  margin-top: 8px;
 }
+
 .video-options {
   display: flex;
- width: 90%;
-
   justify-content: center;
   align-items: center;
-  gap: 25px;
-  padding: 15px 0;
-  background: rgba(20, 20, 20, 0.85);
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.4);
+  gap: 14px;
+  padding: 10px 16px;
+  background: rgba(15, 18, 24, 0.92);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .video-options button {
-  color: white !important;
-  background: rgba(255, 255, 255, 0.08);
+  color: #f6f7fb !important;
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 50%;
-  transition: all 0.2s ease;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .video-options button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: scale(1.1);
-  box-shadow: 0 0 8px rgb(0, 255, 213);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
 }
 
-/* Responsive layout */
-@media (max-width: 768px) {
-  .video-cards {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-  }
-
-  .video-options {
-    gap: 15px;
-    padding: 10px 0;
-  }
-}
-
-/* ------------------ Chat Section ------------------ */
 .chat-container {
-  flex: 1;
-  background: #0e0e0e;
-  border-left: 1px solid #2b2b2b;
-  border-radius: 16px 0 0 16px;
-  padding: 20px;
+  flex: 0.95;
+  background: #0f1218;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  margin-left: 12px;
 }
 
 .chat-container h2 {
-  font-size: 18px;
+  font-size: 1rem;
   margin-bottom: 12px;
   font-weight: 600;
+  color: #f6f7fb;
 }
 
 .SendMessageContainer {
   flex: 1;
   overflow-y: auto;
-  padding-right: 5px;
+  padding-right: 4px;
 }
 
 .Messages {
-  background: #1b1b1b;
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
   padding: 10px 12px;
   margin-bottom: 10px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .Messages:hover {
-  background: #222;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .Person {
-  font-size: 22px;
-  color: #4b9cff;
+  font-size: 20px;
+  color: #7aa2ff;
 }
 
 .Username {
   font-weight: 600;
   margin-right: 6px;
-  color: #fff;
+  color: #f6f7fb;
 }
 
 .message {
-  color: #ddd;
+  color: #8f96a8;
   font-size: 14px;
+  line-height: 1.5;
 }
 
-/* ------------------ Chat Input ------------------ */
 .ChatInput {
   display: flex;
-}
-.MessageInput {
-  border: none;
-  border-radius: 12px;
-  padding: 10px 14px;
-  background: #1a1a1a;
-  color: white;
-  font-size: 14px;
-  outline: none;
-  width: calc(100% - 60px);
+  gap: 8px;
   margin-top: 10px;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.MessageInput {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #f6f7fb;
+  outline: none;
 }
 
 .SendButton {
-  background: none;
+  background: #5b8cff;
   border: none;
-  border-radius: 12px;
-  padding: 10px 16px;
+  border-radius: 10px;
+  padding: 10px 12px;
   color: white;
   cursor: pointer;
-  margin-left: 8px;
-  transition: all 0.2s ease;
 }
 
-.SendButton svg :hover {
-  color: #4b9cff;
+.SendButton:hover {
+  background: #7aa2ff;
 }
 
-/* ------------------ Scrollbar ------------------ */
 .SendMessageContainer::-webkit-scrollbar {
   width: 6px;
 }
 
 .SendMessageContainer::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+@media (max-width: 1024px) {
+  .Main {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .video-container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .chat-container {
+    margin-left: 0;
+    margin-top: 12px;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .VideoMeet {
+    padding: 12px;
+  }
+
+  .Container {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .User-Video {
+    position: static;
+    width: 100%;
+    height: 180px;
+    margin-bottom: 12px;
+  }
+
+  .video-options {
+    flex-wrap: wrap;
+  }
 }

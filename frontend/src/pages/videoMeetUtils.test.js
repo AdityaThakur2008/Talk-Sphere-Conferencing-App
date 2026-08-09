@@ -1,4 +1,4 @@
-import { buildMediaConstraints } from "./videoMeetUtils";
+import { buildMediaConstraints, getMediaTracks } from "./videoMeetUtils";
 
 describe("buildMediaConstraints", () => {
   it("disables media tracks that are not available", () => {
@@ -21,5 +21,32 @@ describe("buildMediaConstraints", () => {
         audioAvailable: true,
       }),
     ).toEqual({ video: false, audio: false });
+  });
+
+  it("returns audio-only constraints when video is unavailable", () => {
+    expect(
+      buildMediaConstraints({
+        videoEnabled: true,
+        audioEnabled: true,
+        videoAvailable: false,
+        audioAvailable: true,
+      }),
+    ).toEqual({ video: false, audio: true });
+  });
+});
+
+describe("getMediaTracks", () => {
+  it("returns audio and video tracks from a media stream", () => {
+    const audioTrack = { kind: "audio" };
+    const videoTrack = { kind: "video" };
+    const stream = {
+      getAudioTracks: () => [audioTrack],
+      getVideoTracks: () => [videoTrack],
+    };
+
+    expect(getMediaTracks(stream)).toEqual({
+      audioTracks: [audioTrack],
+      videoTracks: [videoTrack],
+    });
   });
 });

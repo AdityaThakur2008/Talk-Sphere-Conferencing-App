@@ -1,34 +1,40 @@
-// darkGlassTheme.js
 import { createTheme } from "@mui/material/styles";
 
 const darkGlassTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#60a5fa", // Neon Blue
+      main: "#5b8cff",
     },
     secondary: {
-      main: "#ff9839", // Neon Orange
+      main: "#8da6ff",
     },
     background: {
-      default: "#0b0b12",
-      paper: "rgba(20, 20, 30, 0.45)",
+      default: "#06070b",
+      paper: "#151923",
     },
     text: {
-      primary: "#f1f5f9",
-      secondary: "#cbd5e1",
+      primary: "#f6f7fb",
+      secondary: "#8f96a8",
     },
+    divider: "rgba(255,255,255,0.08)",
   },
   typography: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily:
+      "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    h1: { fontWeight: 700 },
+    h2: { fontWeight: 600 },
+    h3: { fontWeight: 600 },
+    body1: { fontSize: "0.95rem", lineHeight: 1.6 },
+    button: { fontWeight: 600, textTransform: "none" },
   },
   components: {
     MuiPaper: {
       styleOverrides: {
         root: {
-          backdropFilter: "blur(12px)",
-          border: "1px solid rgba(255,255,255,0.1)",
-          boxShadow: "0 0 25px rgba(96,165,250,0.15)",
+          backgroundImage: "none",
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow: "0 12px 30px rgba(0, 0, 0, 0.24)",
           borderRadius: "16px",
         },
       },
@@ -39,13 +45,15 @@ const darkGlassTheme = createTheme({
           textTransform: "none",
           borderRadius: "10px",
           fontWeight: 600,
+          minHeight: "44px",
+          transition:
+            "background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease",
           "&.MuiButton-contained": {
-            background: "linear-gradient(90deg, #2563eb, #ff9839)",
-            boxShadow: "0 0 25px rgba(37,99,235,0.4)",
-            transition: "0.3s ease",
+            backgroundColor: "#5b8cff",
+            boxShadow: "none",
             "&:hover": {
-              boxShadow: "0 0 35px rgba(255,152,57,0.6)",
-              transform: "translateY(-2px)",
+              backgroundColor: "#7aa2ff",
+              transform: "translateY(-1px)",
             },
           },
         },
@@ -54,12 +62,13 @@ const darkGlassTheme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          "& label": { color: "#cbd5e1" },
+          "& label": { color: "#8f96a8" },
           "& .MuiOutlinedInput-root": {
             borderRadius: "10px",
-            "& fieldset": { borderColor: "rgba(255,255,255,0.15)" },
-            "&:hover fieldset": { borderColor: "#60a5fa" },
-            "&.Mui-focused fieldset": { borderColor: "#ff9839" },
+            backgroundColor: "rgba(255,255,255,0.03)",
+            "& fieldset": { borderColor: "rgba(255,255,255,0.12)" },
+            "&:hover fieldset": { borderColor: "rgba(255,255,255,0.2)" },
+            "&.Mui-focused fieldset": { borderColor: "#5b8cff" },
           },
         },
       },

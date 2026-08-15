@@ -31,6 +31,10 @@ app.use(express.json({ limit: "40kb" }));
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
 app.use("/user", userRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hello from server");
+});
+
 const start = async () => {
   app.set("mongo_user");
   const connectToDb = await mongoose.connect(process.env.MONGO_URL);

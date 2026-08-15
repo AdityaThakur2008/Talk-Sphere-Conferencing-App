@@ -1,4 +1,3 @@
-let IS_PROD = true;
-const Server_Dev = IS_PROD ? "https://talk-sphere-conferencing-app.onrender.com":"http://localhost:8000";
+const Server_Dev = "https://talk-sphere-conferencing-app.onrender.com";
 
 export default Server_Dev;
